@@ -9,7 +9,8 @@ Another usage is to fix error in js comming from ressource included in dll.
 <i>Coming soon</i>
 
 ## Requirements
-<i>Coming soon</i>
+IIS 7.0 or newer.
+Can be installed on Iis6, but static resources won't be updated
 
 ## Installation
 <i>Coming soon</i>
