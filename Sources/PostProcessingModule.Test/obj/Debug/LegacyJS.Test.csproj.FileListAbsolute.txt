@@ -1,0 +1,5 @@
+C:\Users\pierr\Documents\FunkyTextBox\LegacyJS.Test\bin\Debug\LegacyJS.Test.dll
+C:\Users\pierr\Documents\FunkyTextBox\LegacyJS.Test\bin\Debug\LegacyJS.Test.pdb
+C:\Users\pierr\Documents\FunkyTextBox\LegacyJS.Test\obj\Debug\LegacyJS.Test.dll
+C:\Users\pierr\Documents\FunkyTextBox\LegacyJS.Test\obj\Debug\LegacyJS.Test.pdb
+C:\Users\pierr\Documents\FunkyTextBox\LegacyJS.Test\obj\Debug\LegacyJS.Test.csprojResolveAssemblyReference.cache
