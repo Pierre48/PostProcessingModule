@@ -1,0 +1,64 @@
+<ArrayOfRule xmlns="http://schemas.datacontract.org/2004/07/PostProcessing" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <Rule>
+    <Changes>
+      <Change>
+        <NewString>The response is 43(That is a js request)</NewString>
+        <OldString>The response is 42</OldString>
+      </Change>
+    </Changes>
+    <ContentTypes xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <a:string>application/javascript</a:string>
+      <a:string>jk</a:string>
+    </ContentTypes>
+    <FilePathEndWith i:nil="true" xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+  </Rule>
+  <Rule>
+    <Changes>
+      <Change>
+        <NewString>The response is 43(inserted text)</NewString>
+        <OldString>The response is 42</OldString>
+      </Change>
+    </Changes>
+    <ContentTypes i:nil="true" xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <FilePathEndWith xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <a:string>sample.js</a:string>
+      <a:string>jk</a:string>
+    </FilePathEndWith>
+  </Rule>
+  <Rule>
+    <Changes>
+      <Change>
+        <NewString>if(false)</NewString>
+        <OldString>if(ig_shared.IsIE&amp;&amp;ig_shared.IsWin)</OldString>
+      </Change>
+    </Changes>
+    <ContentTypes i:nil="true" xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <FilePathEndWith xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <a:string>WebResource.axd</a:string>
+    </FilePathEndWith>
+  </Rule>
+  <Rule>
+    <Changes>
+      <Change>
+        <NewString>if (typeof (obj[item]) != "undefined" &amp;&amp; obj[item] != null &amp;&amp; !obj[item].tagName &amp;&amp; !obj[item].disposing &amp;&amp; typeof (obj[item]) != "string" &amp;&amp; obj.hasOwnProperty(item))</NewString>
+        <OldString>if (typeof (obj[item]) != "undefined" &amp;&amp; obj[item] != null &amp;&amp; !obj[item].tagName &amp;&amp; !obj[item].disposing &amp;&amp; typeof (obj[item]) != "string")</OldString>
+      </Change>
+    </Changes>
+    <ContentTypes i:nil="true" xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <FilePathEndWith xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <a:string>WebResource.axd</a:string>
+    </FilePathEndWith>
+  </Rule>
+  <Rule>
+    <Changes>
+      <Change>
+        <NewString>if (typeof (obj[item]) != "undefined" &amp;&amp; obj[item] != null &amp;&amp; !obj[item].tagName &amp;&amp; !obj[item].disposing &amp;&amp; typeof (obj[item]) != "string" &amp;&amp; obj.hasOwnProperty(item))</NewString>
+        <OldString>if (typeof (obj[item]) != "undefined" &amp;&amp; obj[item] != null &amp;&amp; !obj[item].tagName &amp;&amp; !obj[item].disposing &amp;&amp; typeof (obj[item]) != "string")</OldString>
+      </Change>
+    </Changes>
+    <ContentTypes i:nil="true" xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <FilePathEndWith xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <a:string>ig_webgrid.js</a:string>
+    </FilePathEndWith>
+  </Rule>
+</ArrayOfRule>
