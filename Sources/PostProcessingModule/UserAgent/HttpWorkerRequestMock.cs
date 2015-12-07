@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace LegacyJS.UserAgent
+namespace PostProcessing.UserAgent
 {
     internal class HttpWorkerRequestMock : HttpWorkerRequest
     {

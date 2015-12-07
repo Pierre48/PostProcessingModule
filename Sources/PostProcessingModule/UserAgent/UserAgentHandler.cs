@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Web;
 
-namespace LegacyJS
+namespace PostProcessing
 {
     /// <summary>
     /// The handler that will allow to change http response

@@ -7,10 +7,10 @@ using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
 
-namespace LegacyJS.Test
+namespace PostProcessing.Test
 {
     [TestClass]
-    public class LegacyJSTest
+    public class PostProcessingTest
     {
         [TestMethod] 
         public void InsertedText_Test() 

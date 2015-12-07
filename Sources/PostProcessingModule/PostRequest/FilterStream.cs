@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Handlers;
 
-namespace LegacyJS
+namespace PostProcessing
 {
     /// <summary>
     /// This class is an implementation of the filter pattern on a stream 

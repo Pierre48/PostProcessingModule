@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Cache;
 using System.Web;
 
-namespace LegacyJS
+namespace PostProcessing
 {
     /// <summary>
     /// A rule allows to specify which kind of request has to be modified, and which changes has to be applied
@@ -47,7 +47,7 @@ namespace LegacyJS
             {
                 foreach (var contentType in ContentTypes)
                 {
-                    result |= contentType != null && AcceptTypes(request.AcceptTypes, contentType);
+                    result |= contentType != null && string.Equals(request.ContentType, contentType,StringComparison.InvariantCultureIgnoreCase);
                 }
                 if (!result) return result;
             }

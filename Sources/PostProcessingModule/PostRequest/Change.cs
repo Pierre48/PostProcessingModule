@@ -1,4 +1,4 @@
-﻿namespace LegacyJS
+﻿namespace PostProcessing
 {
     public class Change
     {

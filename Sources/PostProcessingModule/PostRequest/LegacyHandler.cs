@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 
-namespace LegacyJS
+namespace PostProcessing
 {
     /// <summary>
     /// The handler that will allow to change http response
@@ -16,7 +16,7 @@ namespace LegacyJS
         {
             new Rule
             {
-                ContentTypes = new List<string> {"application/javascript" },
+                ContentTypes = new List<string> {"application/javascript","jk" },
                 Changes = new List<Change>
                 {
                     new Change
@@ -28,7 +28,7 @@ namespace LegacyJS
             },
             new Rule
             {
-                FilePathEndWith = new List<string> {"sample.js" },
+                FilePathEndWith = new List<string> {"sample.js","jk" },
                 Changes = new List<Change>
                 {
                     new Change
