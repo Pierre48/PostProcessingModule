@@ -137,11 +137,8 @@ namespace PostProcessing
             {
                 foreach (var change in _changes)
                 {
-                    // Todo manage refresh & cache
-                    //TOdo manage case unsesitive
-                    //  str = Regex.Replace(str, Regex.Escape(change.OldString), change.NewString.Replace("$", "$$"),
-                    //     RegexOptions.IgnoreCase);
-                    str = str.Replace(change.OldString, change.NewString);
+                    // Regex.Replace is used to be able to replace string in case insensitive mode
+                      str = Regex.Replace(str, Regex.Escape(change.OldString), change.NewString.Replace("$", "$$"), RegexOptions.IgnoreCase);
                 }
             }
 
