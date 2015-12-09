@@ -8,12 +8,13 @@ namespace PostProcessing
     /// <summary>
     /// A rule allows to specify which kind of request has to be modified, and which changes has to be applied
     /// </summary>
+    [Serializable]
     public class Rule
     {
         /// <summary>
         /// The file path end with
         /// </summary>
-        public List<string> FilePathEndWith ;
+        public List<string> FilePathEndWith;
 
         /// <summary>
         /// ContentTypes
@@ -23,7 +24,7 @@ namespace PostProcessing
         /// <summary>
         /// The changes/
         /// </summary>
-        public List<Change> Changes ;
+        public List<Change> Changes;
 
         /// <summary>
         /// Checks the specified request.
@@ -33,23 +34,24 @@ namespace PostProcessing
         /// <returns></returns>
         public bool Check(HttpRequest request, HttpResponse response)
         {
-            var result = false;
-            if (FilePathEndWith != null)
+            if (FilePathEndWith != null && FilePathEndWith.Count != 0)
             {
+                var result = false;
                 foreach (var end in FilePathEndWith)
                 {
                     result |= end != null && request.FilePath.EndsWith(end, StringComparison.InvariantCultureIgnoreCase);
                 }
-                if (!result) return result;
+                if (!result) return false;
             }
 
-            if (ContentTypes != null)
+            if (ContentTypes != null && ContentTypes.Count!=0)
             {
+                var result = false;
                 foreach (var contentType in ContentTypes)
                 {
-                    result |= contentType != null && string.Equals(request.ContentType, contentType,StringComparison.InvariantCultureIgnoreCase);
+                    result |= contentType != null && string.Equals(request.ContentType, contentType, StringComparison.InvariantCultureIgnoreCase);
                 }
-                if (!result) return result;
+                if (!result) return false;
             }
 
             return true;

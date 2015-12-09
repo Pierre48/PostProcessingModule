@@ -15,7 +15,7 @@
   <Rule>
     <Changes>
       <Change>
-        <NewString>The response is 43(inserted text)</NewString>
+        <NewString>The response is 43(inserted tdsfext)</NewString>
         <OldString>The response is 42</OldString>
       </Change>
     </Changes>

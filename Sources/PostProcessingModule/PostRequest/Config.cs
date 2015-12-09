@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Threading.Tasks;
+using System.Web;
+using System.Xml.Serialization;
 
 namespace PostProcessing.PostRequest
 {
@@ -27,19 +27,33 @@ namespace PostProcessing.PostRequest
 
         public List<Rule> Rules { get; private set; }
 
-        private static void IntializeFromWwwRoot()
+        private static bool IntializeFrom(string path)
         {
-            var request = HttpWebRequest.Create(@"http://localhost/PostProcessingConfiguration.xml");
-            request.Headers.Add("Cache-Control", "private, max-age=0, no-cache");
-            var response = request.GetResponse();
+            try
+            {
+                if (!path.EndsWith(@"/")) path = path + "/";
 
-            var serializer = new DataContractSerializer(typeof(List<Rule>));
-            _config.Rules = serializer.ReadObject(response.GetResponseStream()) as List<Rule>;
+                var request = HttpWebRequest.Create(@"http://localhost" + path + "PostProcessingConfiguration.xml");
+                request.Headers.Add("Cache-Control", "private, max-age=0, no-cache");
+                var response = request.GetResponse();
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Rule>));
+
+                _config.Rules = serializer.Deserialize(response.GetResponseStream()) as List<Rule>;
+                return true;
+            }
+            catch (WebException)
+            {
+                _config.Rules = new List<Rule>();
+                return false;
+            }
         }
-        internal static void Intialize()
+
+        internal static void Intialize(HttpRequest request)
         {
             _config = new Configuration();
-            IntializeFromWwwRoot();
+
+            if (!IntializeFrom(request.ApplicationPath))
+                IntializeFrom(@"/");
         }
     }
 }

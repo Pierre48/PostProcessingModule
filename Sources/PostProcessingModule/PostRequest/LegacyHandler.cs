@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Json;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Web;
 
@@ -12,7 +12,7 @@ namespace PostProcessing
     /// The handler that will allow to change http response
     /// </summary>
     public class LegacyHandler : IHttpModule
-    { 
+    {
         private HttpApplication _context;
 
         private HttpRequest Request
@@ -39,8 +39,11 @@ namespace PostProcessing
 
         private void _context_PreRequestHandlerExecute(object sender, EventArgs e)
         {
-            Configuration.Intialize();
-            var application = (HttpApplication) sender;
+            if (Request.FilePath.EndsWith("PostProcessingConfiguration.xml", StringComparison.InvariantCultureIgnoreCase))
+                return;
+
+            Configuration.Intialize(Request);
+            var application = (HttpApplication)sender;
 
             foreach (var rule in Configuration.Current.Rules)
             {
@@ -55,11 +58,11 @@ namespace PostProcessing
 
                     filter.AddChanges(rule.Changes);
 
-                    application.Response.Filter = filter; 
+                    application.Response.Filter = filter;
                 }
             }
-            
+
         }
-        
+
     }
 }
