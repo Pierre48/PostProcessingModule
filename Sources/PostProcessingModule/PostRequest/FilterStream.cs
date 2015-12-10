@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web;
 using System.Web.Handlers;
 
@@ -63,6 +65,7 @@ namespace PostProcessing
 
         public override void Flush()
         {
+            _filter.Flush();
         }
 
         public override int Read(byte[] buffer, int offset, int count)
@@ -151,5 +154,66 @@ namespace PostProcessing
         {
             _changes.AddRange(changes);
         }
+
+        public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+        {
+            return _filter.BeginRead(buffer, offset, count, callback, state);
+        }
+
+        public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+        {
+            return _filter.BeginWrite(buffer, offset, count, callback, state);
+        }
+
+        public override void Close()
+        {
+            _filter.Close();
+        }
+
+        public override ObjRef CreateObjRef(Type requestedType)
+        {
+            return _filter.CreateObjRef(requestedType);
+        }
+
+        public override int EndRead(IAsyncResult asyncResult)
+        {
+            return _filter.EndRead(asyncResult);
+        }
+
+        public override void EndWrite(IAsyncResult asyncResult)
+        {
+            _filter.EndWrite(asyncResult);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return _filter.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return _filter.GetHashCode();
+        }
+
+        public override object InitializeLifetimeService()
+        {
+            return _filter.InitializeLifetimeService();
+        }
+
+        public override int ReadByte()
+        {
+            return _filter.ReadByte();
+        }
+
+        public override string ToString()
+        {
+            return _filter.ToString();
+        }
+
+        public override void WriteByte(byte value)
+        {
+            _filter.WriteByte(value);
+        }
+        
     }
 }

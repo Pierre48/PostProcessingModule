@@ -81,6 +81,7 @@
     <Content Include="sample.css" />
     <Content Include="sample2.js" />
     <Content Include="sample.js" />
+    <Content Include="th.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
