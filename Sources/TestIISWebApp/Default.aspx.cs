@@ -11,7 +11,8 @@ namespace TestIISWebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            string imageUrl = Page.ClientScript.GetWebResourceUrl(typeof(WebCustomControl1), "TestIISWebApp.th.jpg");
+            Image1.ImageUrl = imageUrl; 
         }
     }
 }

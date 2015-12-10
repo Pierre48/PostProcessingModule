@@ -34,10 +34,10 @@ namespace PostProcessing
 
             _context = context;
 
-            _context.PreRequestHandlerExecute += _context_PreRequestHandlerExecute;
+            _context.PostRequestHandlerExecute += _context_PreSendRequestContent;
         }
 
-        private void _context_PreRequestHandlerExecute(object sender, EventArgs e)
+        private void _context_PreSendRequestContent(object sender, EventArgs e)
         {
             if (Request.FilePath.EndsWith("PostProcessingConfiguration.xml", StringComparison.InvariantCultureIgnoreCase))
                 return;

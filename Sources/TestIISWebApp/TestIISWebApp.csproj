@@ -81,7 +81,7 @@
     <Content Include="sample.css" />
     <Content Include="sample2.js" />
     <Content Include="sample.js" />
-    <Content Include="th.jpg" />
+    <EmbeddedResource Include="th.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +93,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebCustomControl1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PostProcessingModule\PostProcessing.csproj">

@@ -49,7 +49,7 @@ namespace PostProcessing
                 var result = false;
                 foreach (var contentType in ContentTypes)
                 {
-                    result |= contentType != null && string.Equals(request.ContentType, contentType, StringComparison.InvariantCultureIgnoreCase);
+                    result |= contentType != null && string.Equals(response.ContentType, contentType, StringComparison.InvariantCultureIgnoreCase);
                 }
                 if (!result) return false;
             }
