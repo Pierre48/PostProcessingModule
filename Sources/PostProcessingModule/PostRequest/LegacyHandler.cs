@@ -34,12 +34,17 @@ namespace PostProcessing
 
             _context = context;
 
-            _context.PostRequestHandlerExecute += _context_PreSendRequestContent;
+            _context.PostRequestHandlerExecute += PostRequestHandlerExecute;
         }
 
-        private void _context_PreSendRequestContent(object sender, EventArgs e)
+        private void PostRequestHandlerExecute(object sender, EventArgs e)
         {
             if (Request.FilePath.EndsWith("PostProcessingConfiguration.xml", StringComparison.InvariantCultureIgnoreCase))
+                return;
+
+            if (Response.StatusCode != 200)
+                // Change are only applied when the status is 200.
+                // It avoids to apply several time the same change
                 return;
 
             Configuration.Intialize(Request);
