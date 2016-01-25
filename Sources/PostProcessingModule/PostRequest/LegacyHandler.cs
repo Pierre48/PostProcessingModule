@@ -1,13 +1,9 @@
-﻿using PostProcessing.PostRequest;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Web;
-
-namespace PostProcessing
+﻿namespace PostProcessing
 {
+    using PostProcessing.PostRequest;
+    using System;
+    using System.Web;
+
     /// <summary>
     /// The handler that will allow to change http response
     /// </summary>
@@ -15,11 +11,17 @@ namespace PostProcessing
     {
         private HttpApplication _context;
 
+        /// <summary>
+        /// The current request
+        /// </summary>
         private HttpRequest Request
         {
             get { return _context?.Request; }
         }
 
+        /// <summary>
+        /// the current response
+        /// </summary>
         private HttpResponse Response
         {
             get { return _context?.Response; }
@@ -27,13 +29,16 @@ namespace PostProcessing
 
         public void Dispose()
         {
+            // Nothing to release
         }
 
+        /// <summary>
+        /// Initilization of the request
+        /// </summary>
+        /// <param name="context"></param>
         public void Init(HttpApplication context)
         {
-
             _context = context;
-
             _context.PostRequestHandlerExecute += PostRequestHandlerExecute;
         }
 
@@ -42,10 +47,11 @@ namespace PostProcessing
             if (Request.FilePath.EndsWith("PostProcessingConfiguration.xml", StringComparison.InvariantCultureIgnoreCase))
                 return;
 
-            if (Response.StatusCode != 200)
-                // Change are only applied when the status is 200.
-                // It avoids to apply several time the same change
-                return;
+            //if (Request.ReadEntityBodyMode  == ReadEntityBodyMode.None)
+
+            //    // Change are only applied when the status is 200.
+            //    // It avoids to apply several time the same change
+            //return;
 
             Configuration.Intialize(Request);
             var application = (HttpApplication)sender;
@@ -53,14 +59,15 @@ namespace PostProcessing
             foreach (var rule in Configuration.Current.Rules)
             {
                 if (rule.Check(Request, Response))
-                {
+                {// We check rules that must be applied
                     FilterStream filter = application.Response.Filter as FilterStream;
                     if (filter == null)
-                    {
+                    {// Change are applied through a filter
                         filter = new FilterStream(Response.Filter, Response.ContentEncoding);
                         application.Response.Filter = filter;
                     }
 
+                    // If a filter is altready applied, then we add the rule to the existing filter
                     filter.AddChanges(rule.Changes);
 
                     application.Response.Filter = filter;

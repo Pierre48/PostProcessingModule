@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Runtime.Remoting;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-using System.Web;
-using System.Web.Handlers;
-
-namespace PostProcessing
+﻿namespace PostProcessing
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Reflection;
+    using System.Runtime.Remoting;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Web;
+
     /// <summary>
     /// This class is an implementation of the filter pattern on a stream 
     /// It allows to update JS, or html

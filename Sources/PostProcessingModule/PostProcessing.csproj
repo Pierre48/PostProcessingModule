@@ -67,7 +67,7 @@
     <Compile Include="UserAgent\HttpWorkerRequestMock.cs" />
     <Compile Include="UserAgent\UserAgentHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PostRequest\Rule.cs" />
+    <Compile Include="TestResults\Rule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Key.pfx" />
