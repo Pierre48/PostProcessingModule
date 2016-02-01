@@ -56,6 +56,7 @@
             Configuration.Intialize(Request);
             var application = (HttpApplication)sender;
 
+            if (Configuration.Current.Rules!=null)
             foreach (var rule in Configuration.Current.Rules)
             {
                 if (rule.Check(Request, Response))

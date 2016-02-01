@@ -34,7 +34,7 @@
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        private static bool IntializeFrom(string path= @"c:\inetpub\wwwwroot\")
+        private static bool IntializeFrom(string path= @"c:\inetpub\wwwroot\")
         {
             try
             {
